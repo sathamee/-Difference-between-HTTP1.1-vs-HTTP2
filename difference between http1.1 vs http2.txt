@@ -1,0 +1,23 @@
+ Difference between HTTP1.1 vs HTTP2
+
+what is http1.1?
+
+ HTTP 1.1 is the latest version of Hypertext Transfer Protocol (HTTP), the World Wide Web application protocol that runs on top of the Internet's TCP/IP suite of protocols. HTTP 1.1 provides faster delivery of Web pages than the original HTTP and reduces Web traffic. Developed by a committee of the Internet Engineering Task Force (IETF) that includes the Web's chief creator Tim Berners-Lee, HTTP 1.1 is supported by the latest Web servers and browsers.
+
+Here's a summary of how HTTP 1.1 makes information flow faster:
+
+Instead of opening and closing a connection for each application request, HTTP 1.1 provides a persistent connection that allows multiple requests to be batched or pipelined to an output buffer . The underlying Transmission Control Protocol layer can put multiple requests (and responses to requests) into one TCP segment that gets forwarded to the Internet Protocol layer for packet transmission. Because the number of connection and disconnection requests for a sequence of "get a file" requests is reduced, fewer packets need to flow across the Internet. Since requests are pipelined, TCP segments are more efficient. The overall result is less Internet traffic and faster performance for the user. Persistent connection is similar to Netscape's HTTP 1.0 extension called KeepAlive, but provides better handling of requests that go through proxy servers.
+When a browser supporting HTTP 1.1 indicates it can decompress HTML files, a server will compress them for transport across the Internet, providing a substantial aggregate savings in the amount of data that has to be transmitted. (Image files are already in a compressed format so this improvement applies only to HTML and other non-image data types.)
+In addition to persistent connections and other performance improvements, HTTP 1.1 also provides the ability to have multiple domain names share the same Internet address (IP address). This simplifies processing for Web servers that host a number of Web sites in what is sometimes called virtual hosting.
+
+what is http2?
+
+ HTTP/2 will make our applications faster, simpler, and more robust — a rare combination — by allowing us to undo many of the HTTP/1.1 workarounds previously done within our applications and address these concerns within the transport layer itself. Even better, it also opens up a number of entirely new opportunities to optimize our applications and improve performance!
+
+The primary goals for HTTP/2 are to reduce latency by enabling full request and response multiplexing, minimize protocol overhead via efficient compression of HTTP header fields, and add support for request prioritization and server push. To implement these requirements, there is a large supporting cast of other protocol enhancements, such as new flow control, error handling, and upgrade mechanisms, but these are the most important features that every web developer should understand and leverage in their applications.
+
+HTTP/2 does not modify the application semantics of HTTP in any way. All the core concepts, such as HTTP methods, status codes, URIs, and header fields, remain in place. Instead, HTTP/2 modifies how the data is formatted (framed) and transported between the client and server, both of which manage the entire process, and hides all the complexity from our applications within the new framing layer. As a result, all existing applications can be delivered without modification.
+
+difference between http1.1 vs http2
+
+ As opposed to HTTP/1.1, which keeps all requests and responses in plain text format, HTTP/2 uses the binary framing layer to encapsulate all messages in binary format, while still maintaining HTTP semantics, such as verbs, methods, and headers.
